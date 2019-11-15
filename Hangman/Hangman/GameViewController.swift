@@ -17,6 +17,7 @@ class GameViewController: UIViewController {
     @IBOutlet weak var userInputs: UITextField!
     
     var word: String = ""
+    
     var gameClass = Game()
     
     override func viewDidLoad() {
@@ -29,7 +30,7 @@ class GameViewController: UIViewController {
     }
     
     func updateWord() {
-        currentWord.text = Array(repeating: "_ ", count: word.count).description
+        currentWord.text = String(repeating: "_", count: word.count)
         
     }
     
@@ -45,8 +46,13 @@ class GameViewController: UIViewController {
 }
 extension GameViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        var hiddenWord = currentWord.text!
+        
+        var hiddenWord = Array(currentWord.text!)
+        
+        var indices : Set<Int> = []
+
         userInputs.resignFirstResponder()
+        
         if let userInput = userInputs.text{
             if gameClass.alphabet.contains(userInput.uppercased()) {
                 gameClass.letterGuesses.append(userInput)
@@ -58,14 +64,27 @@ extension GameViewController: UITextFieldDelegate {
                 }
                 
             }
+            
+            print(word)
             for (index,char) in word.enumerated() {
-                if word.uppercased().contains(userInput.uppercased()) {
-                    
-                    
-                }
+                if gameClass.alphabet.contains(userInput.uppercased()) {
+                         if Character(userInput) == char {
+                             indices.insert(index)
+                             print(indices)
+                         }
+
+                     }
             }
             
+            for (index, _) in hiddenWord.enumerated() {
+                       if indices.contains(index) {
+                           hiddenWord[index] = Character(userInput)
+                        print(indices)
+                       }
+              }
+            
         }
+        currentWord.text = hiddenWord.description
         return true
         
     }
