@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Create Word View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Hangman" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="CreateWordViewController" customModule="Hangman" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -49,15 +49,19 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="EI3-yr-QAu"/>
+                    <connections>
+                        <outlet property="confirmWord" destination="zcv-Ny-Tb5" id="hYv-uI-s3j"/>
+                        <outlet property="enterWordTF" destination="ESL-cj-pwN" id="Dkf-sa-Q1g"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1124" y="108.39580209895054"/>
         </scene>
-        <!--View Controller-->
+        <!--Game View Controller-->
         <scene sceneID="AMh-VU-BUf">
             <objects>
-                <viewController id="F7a-r4-8Re" sceneMemberID="viewController">
+                <viewController id="F7a-r4-8Re" customClass="GameViewController" customModule="Hangman" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Vf6-ex-Ia9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -72,26 +76,41 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cww-gG-SPI">
-                                <rect key="frame" x="16" y="316.5" width="343" height="34"/>
+                                <rect key="frame" x="16" y="409" width="343" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Word" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hGo-Ge-DAe">
+                                <rect key="frame" x="150" y="323" width="75" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="g9U-au-9Jq" firstAttribute="trailing" secondItem="wbF-3v-5RK" secondAttribute="trailing" constant="16" id="9dY-4h-cin"/>
-                            <constraint firstItem="cww-gG-SPI" firstAttribute="top" secondItem="Rbw-rP-z20" secondAttribute="bottom" constant="20" id="Qcs-6C-aZ7"/>
-                            <constraint firstItem="wbF-3v-5RK" firstAttribute="top" secondItem="g9U-au-9Jq" secondAttribute="top" id="Ydx-zW-mbS"/>
-                            <constraint firstItem="Rbw-rP-z20" firstAttribute="top" secondItem="wbF-3v-5RK" secondAttribute="bottom" constant="8" id="arh-6G-75J"/>
-                            <constraint firstItem="Rbw-rP-z20" firstAttribute="centerX" secondItem="Vf6-ex-Ia9" secondAttribute="centerX" id="cA5-8J-NYO"/>
-                            <constraint firstItem="cww-gG-SPI" firstAttribute="leading" secondItem="g9U-au-9Jq" secondAttribute="leading" constant="16" id="mP9-1t-ZVW"/>
-                            <constraint firstItem="cww-gG-SPI" firstAttribute="centerY" secondItem="Vf6-ex-Ia9" secondAttribute="centerY" id="o2P-4C-vU2"/>
-                            <constraint firstItem="wbF-3v-5RK" firstAttribute="leading" secondItem="g9U-au-9Jq" secondAttribute="leading" constant="16" id="rMw-Qr-c1H"/>
-                            <constraint firstItem="g9U-au-9Jq" firstAttribute="trailing" secondItem="cww-gG-SPI" secondAttribute="trailing" constant="16" id="v52-jW-Ew0"/>
+                            <constraint firstItem="hGo-Ge-DAe" firstAttribute="top" secondItem="Rbw-rP-z20" secondAttribute="bottom" constant="26.5" id="8x7-yI-yca"/>
+                            <constraint firstItem="Rbw-rP-z20" firstAttribute="top" secondItem="wbF-3v-5RK" secondAttribute="bottom" constant="8" id="B6P-16-Xxr"/>
+                            <constraint firstItem="g9U-au-9Jq" firstAttribute="trailing" secondItem="wbF-3v-5RK" secondAttribute="trailing" constant="16" id="FnP-9e-1hr"/>
+                            <constraint firstItem="Rbw-rP-z20" firstAttribute="top" secondItem="wbF-3v-5RK" secondAttribute="bottom" constant="8" id="ORw-yc-Y8v"/>
+                            <constraint firstItem="wbF-3v-5RK" firstAttribute="top" secondItem="g9U-au-9Jq" secondAttribute="top" id="Q89-9K-yl1"/>
+                            <constraint firstItem="cww-gG-SPI" firstAttribute="top" secondItem="hGo-Ge-DAe" secondAttribute="bottom" constant="65" id="Upa-dL-nVp"/>
+                            <constraint firstItem="cww-gG-SPI" firstAttribute="leading" secondItem="g9U-au-9Jq" secondAttribute="leading" constant="16" id="VbJ-oV-POa"/>
+                            <constraint firstItem="Rbw-rP-z20" firstAttribute="centerX" secondItem="Vf6-ex-Ia9" secondAttribute="centerX" id="Zzd-Kr-o5w"/>
+                            <constraint firstItem="wbF-3v-5RK" firstAttribute="leading" secondItem="g9U-au-9Jq" secondAttribute="leading" constant="16" id="d28-9I-aZb"/>
+                            <constraint firstItem="g9U-au-9Jq" firstAttribute="trailing" secondItem="cww-gG-SPI" secondAttribute="trailing" constant="16" id="gRd-6M-ECM"/>
+                            <constraint firstItem="hGo-Ge-DAe" firstAttribute="centerX" secondItem="Vf6-ex-Ia9" secondAttribute="centerX" id="ptd-GO-akd"/>
+                            <constraint firstItem="hGo-Ge-DAe" firstAttribute="centerY" secondItem="Vf6-ex-Ia9" secondAttribute="centerY" id="yZj-Lv-3mC"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="g9U-au-9Jq"/>
                     </view>
                     <navigationItem key="navigationItem" id="sKa-W5-9Yn"/>
+                    <connections>
+                        <outlet property="currentWord" destination="hGo-Ge-DAe" id="8gE-Nw-FSU"/>
+                        <outlet property="guessedLetters" destination="Rbw-rP-z20" id="NqL-wi-Zqx"/>
+                        <outlet property="image" destination="wbF-3v-5RK" id="mV3-gb-wav"/>
+                        <outlet property="userInputs" destination="cww-gG-SPI" id="gaN-kc-bgM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yZH-UG-KeT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
